@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Automatically fill Form </title>
+  <style>
+    .btn {
+      font-weight: 700;
+      outline: none !important;
+      border: none;
+      background: transparent;
+      white-space: initial;
+      text-decoration: none;
+      text-transform: uppercase;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      background-clip: padding-box;
+      transition: 0.3s;
+      padding: 10px 15px;
+    }
+
+    .grsf-button {
+      margin: 10px 0;
+      color: #FFFFFF;
+      background: #5890E7;
+      background-color: rgb(88, 144, 231);
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    .btn-lg {
+      padding: 20px 30px;
+    }
+
+    .grsf-form-control {
+      line-height: 1.2;
+      height: 45px;
+      color: #000000;
+      background: #FFFFFF;
+      font-weight: 400;
+      -webkit-border-radius: 8px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.06);
+      border-color: transparent;
+      transition: all 0.3s;
+      padding: 5px 20px;
+    }
+    input{
+      font-size: 1rem;
+    }
+    
+    
+  </style>
+</head>
+<body>
+
+<form action="sub.html" class="grsf-signup-form">
+  
+  <input type="email" id="email" name="email" placeholder="Email Address Here" class="grsf-form-control" required="">
+  
+  <input id="grsf-signup-button" type="submit" class="btn-lg btn grsf-button" style="background-color: rgb(78, 205, 196); color: rgb(255, 255, 255);" value="Get early access">
+  
+</form>
+
+<script src="script.js">
+</script>
+</body>
+</html>
