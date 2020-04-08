@@ -55,14 +55,142 @@
 <body>
 
 <form action="sub.html" class="grsf-signup-form">
-  
+  <!---->
   <input type="email" id="email" name="email" placeholder="Email Address Here" class="grsf-form-control" required="">
   
   <input id="grsf-signup-button" type="submit" class="btn-lg btn grsf-button" style="background-color: rgb(78, 205, 196); color: rgb(255, 255, 255);" value="Get early access">
   
 </form>
 
-<script src="script.js">
+<!--<script>-->
+    <!--"use strict";-->
+    <!--window.onload=function () {-->
+        <!--console.log('started script');-->
+        <!--if (!Array.prototype.forEach) {-->
+            <!--Array.prototype.forEach = function (callback, thisArg) {-->
+                <!--thisArg = thisArg || window;-->
+                <!--for (var i = 0; i < this.length; i++) {-->
+                    <!--callback.call(thisArg, this[i], i, this);-->
+                <!--}-->
+            <!--};-->
+        <!--}-->
+        <!--function validateEmail(email) {-->
+            <!--var regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;-->
+            <!--return regex.test(String(email).toLowerCase());-->
+        <!--}-->
+        <!--window.setTimeout(function () {-->
+
+            <!--console.log('executed script');-->
+
+            <!--var url = window.location.href;-->
+            <!--console.log('url:',url);-->
+
+            <!--if (url.indexOf('%') !== -1) {-->
+                <!--url = decodeURI(url);-->
+                <!--console.log('in decode');-->
+
+            <!--}-->
+            <!---->
+            <!--console.log('url:',url);-->
+
+            <!--var urlParts = url.split("/");-->
+
+            <!--console.log('urlParts:',urlParts);-->
+
+            <!--urlParts.forEach(function (part) {-->
+                <!--if (part[0] === '?') {-->
+                    <!--var email = part;-->
+                    <!--email = email.slice(4, part.length);-->
+                    <!--console.log('email:',email);-->
+                    <!--if (!validateEmail(email)) return 0;-->
+                    <!--var emailField = document.getElementById('email'),-->
+                        <!--form = document.querySelector('.grsf-signup-form');-->
+
+
+                    <!--if(!emailField)-->
+                        <!--return;-->
+                    <!---->
+                    <!--console.log('here');-->
+                    <!--emailField.value = email;-->
+                    <!---->
+                    <!--setTimeout(function () {-->
+                        <!--form.submit();-->
+                    <!--},500)-->
+                <!--}-->
+            <!--});-->
+        <!--},100);-->
+
+    <!--};-->
+
+<!--</script>-->
+
+<script type="text/javascript">
+    "use strict";
+	
+	
+	console.log("referrel link: "+document.referrer);
+	
+    window.onload=function () {
+        console.log('started script');
+        if (!Array.prototype.forEach) {
+            Array.prototype.forEach = function (callback, thisArg) {
+                thisArg = thisArg || window;
+                for (var i = 0; i < this.length; i++) {
+                    callback.call(thisArg, this[i], i, this);
+                }
+            };
+        }
+        function validateEmail(email) {
+            var regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            return regex.test(String(email).toLowerCase());
+        }
+        var url = window.location.href;
+
+        if (url.indexOf('%') !== -1) {
+            url = decodeURIComponent(url);
+        }
+
+        var urlParts = url.split("/"),
+            formAvailable=false;
+
+        var inter=setInterval(checkFormAvailable,100);
+        function checkFormAvailable(){
+            var emailField = document.getElementById('email');
+            if(typeof(emailField) !== 'undefined' && emailField != null){
+                console.log('Form found');
+                inputEmail();
+                clearInterval(inter);
+            }
+        }
+
+        function inputEmail(){
+            urlParts.forEach(function (part) {
+                if (part[0] === '?') {
+                    var email = part;
+                    email = email.slice(4, part.length);
+                    if (!validateEmail(email)) return 0;
+                    var emailField = document.getElementById('email'),
+                        submitButton = document.getElementById('grsf-signup-button');
+                    if(!emailField)
+                        return;
+
+                    emailField.value = email;
+                    console.log('input email in field');
+
+                    if ('fireEvent' in emailField)
+                        emailField.fireEvent("onchange");
+                    else {
+                        var evt = document.createEvent("HTMLEvents");
+                        evt.initEvent("change", false, true);
+                        emailField.dispatchEvent(evt);
+                    }
+                    submitButton.click();
+                    return 0;
+                }
+            });
+        }
+    };
+
 </script>
 </body>
 </html>
